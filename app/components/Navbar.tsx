@@ -2,6 +2,10 @@ import Link from "next/link";
 import { NavbarLinks } from "./NavbarLinks";
 import { Button } from "@/components/ui/button";
 import { MobileMenu } from "./MobileMenu";
+import {
+  LoginLink,
+  RegisterLink,
+} from "@kinde-oss/kinde-auth-nextjs/components";
 
 export function Navbar() {
   return (
@@ -15,8 +19,12 @@ export function Navbar() {
       </div>
       <NavbarLinks />
       <div className="flex items-center gap-x-2 ms-auto md:col-span-3">
-        <Button>Login</Button>
-        <Button variant="secondary">Register</Button>
+        <Button asChild>
+          <LoginLink>Login</LoginLink>
+        </Button>
+        <Button asChild variant="secondary">
+          <RegisterLink>Register</RegisterLink>
+        </Button>
 
         <div className="md:hidden ">
           <MobileMenu />
