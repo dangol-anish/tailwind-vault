@@ -8,10 +8,12 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { SelectCategory } from "../components/SelectCategory";
+import { Textarea } from "@/components/ui/textarea";
+import { TipTapEditor } from "../components/Editor";
 
 export default function SellRoute() {
   return (
-    <section className="max-w-7xl mx-auto px-4 md:px-8">
+    <section className="max-w-7xl mx-auto px-4 md:px-8 mb-14">
       <Card>
         <form action="">
           <CardHeader>
@@ -28,6 +30,18 @@ export default function SellRoute() {
             <div className="flex flex-col gap-y-2">
               <Label>Category</Label>
               <SelectCategory />
+            </div>
+            <div className="flex flex-col gap-y-2">
+              <Label>Price</Label>
+              <Input type="number" placeholder="$100" />
+            </div>
+            <div className="flex flex-col gap-y-2">
+              <Label>Summary</Label>
+              <Textarea placeholder="Please describe your product" />
+            </div>
+            <div className="flex flex-col gap-y-2">
+              <Label>Description</Label>
+              <TipTapEditor />
             </div>
           </CardContent>
         </form>
