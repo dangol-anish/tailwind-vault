@@ -13,8 +13,11 @@ import { Textarea } from "@/components/ui/textarea";
 import { TipTapEditor } from "../components/Editor";
 import { UploadDropzone } from "../lib/uploadthing";
 import { Button } from "@/components/ui/button";
+import { useState } from "react";
+import { JSONContent } from "@tiptap/react";
 
 export default function SellRoute() {
+  const [json, setJson] = useState<null | JSONContent>(null);
   return (
     <section className="max-w-7xl mx-auto px-4 md:px-8 mb-14">
       <Card>
@@ -28,7 +31,11 @@ export default function SellRoute() {
           <CardContent className="flex flex-col gap-y-10">
             <div className="flex flex-col gap-y-2">
               <Label>Name</Label>
-              <Input type="text" placeholder="Name of your Product" />
+              <Input
+                name="name"
+                type="text"
+                placeholder="Name of your Product"
+              />
             </div>
             <div className="flex flex-col gap-y-2">
               <Label>Category</Label>
@@ -36,15 +43,23 @@ export default function SellRoute() {
             </div>
             <div className="flex flex-col gap-y-2">
               <Label>Price</Label>
-              <Input type="number" placeholder="$100" />
+              <Input name="price" type="number" placeholder="$100" />
             </div>
             <div className="flex flex-col gap-y-2">
               <Label>Summary</Label>
-              <Textarea placeholder="Please describe your product" />
+              <Textarea
+                name="smallDescription"
+                placeholder="Please describe your product"
+              />
             </div>
             <div className="flex flex-col gap-y-2">
+              <input
+                type="hidden"
+                name="description"
+                value={JSON.stringify(json)}
+              />
               <Label>Description</Label>
-              <TipTapEditor />
+              <TipTapEditor setJson={setJson} json={json} />
             </div>
             <div className="flex flex-col gap-y-2">
               <Label>Product Images</Label>
